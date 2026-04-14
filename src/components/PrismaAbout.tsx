@@ -4,7 +4,7 @@ import WordsPullUpMultiStyle from "./WordsPullUpMultiStyle";
 import AnimatedLetter from "./AnimatedLetter";
 
 const aboutText =
-  "Over the last seven years, I have worked with Parallax, a Berlin-based production house that crafts cinema, series, and Noir Studio in Paris. Together, we have created work that has earned international acclaim at several major festivals.";
+  "Over the last ten years, I have architected production-grade backend systems across telecom, finance, and AI analytics domains. From microservices platforms serving millions of users at Jazz, Zong, and Telenor, to AI-powered retail analytics and real-time video processing pipelines, I bring strong ownership from system design to deployment and scaling.";
 
 export default function PrismaAbout() {
   const paragraphRef = useRef<HTMLDivElement>(null);
