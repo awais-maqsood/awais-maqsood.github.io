@@ -3,6 +3,7 @@ import PrismaAbout from "@/components/PrismaAbout";
 import PrismaFeatures from "@/components/PrismaFeatures";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
+import PortfolioSection from "@/components/PortfolioSection";
 
 export default function Index() {
   return (
@@ -12,6 +13,7 @@ export default function Index() {
       <PrismaFeatures />
       <SkillsSection />
       <ExperienceSection />
+      <PortfolioSection />
     </div>
   );
 }
