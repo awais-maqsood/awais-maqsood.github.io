@@ -1,6 +1,7 @@
 import PrismaHero from "@/components/PrismaHero";
 import PrismaAbout from "@/components/PrismaAbout";
 import PrismaFeatures from "@/components/PrismaFeatures";
+import SkillsSection from "@/components/SkillsSection";
 
 export default function Index() {
   return (
@@ -8,6 +9,7 @@ export default function Index() {
       <PrismaHero />
       <PrismaAbout />
       <PrismaFeatures />
+      <SkillsSection />
     </div>
   );
 }
