@@ -2,52 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'PP Neue Montreal';
-  src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9bb43e36419997ecfe_PPNeueMontreal-Book.otf') format('opentype');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PP Neue Montreal';
-  src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9b39c5673e51a86f5a_PPNeueMontreal-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PP Mondwest';
-  src: url('/PPMondwest-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 200 68% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 200 68% 9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 200 68% 9%;
-    --primary: 200 68% 9%;
-    --primary-foreground: 196 100% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 200 68% 9%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 198 27% 21%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 200 68% 9%;
+    --bg: 0 0% 4%;
+    --surface: 0 0% 8%;
+    --text: 0 0% 96%;
+    --muted: 0 0% 53%;
+    --stroke: 0 0% 12%;
+    --accent: 0 0% 96%;
+
+    --font-body: 'Inter', sans-serif;
+    --font-display: 'Instrument Serif', serif;
+
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 0% 96%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
+    --muted-color: 0 0% 53%;
+    --muted-foreground: 0 0% 53%;
+    --accent-color: 0 0% 96%;
+    --accent-foreground: 0 0% 4%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 200 68% 9%;
+    --destructive-foreground: 0 0% 96%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 210 40% 70%;
     --radius: 0.5rem;
-    --color-dark: 200 68% 9%;
-    --color-body: 200 55% 11%;
-    --color-light: 196 100% 98%;
-    --color-light-muted: 199 33% 91%;
-    --color-muted-text: 198 27% 21%;
   }
 }
 
@@ -56,33 +42,50 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
-    font-family: 'PP Neue Montreal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    @apply bg-bg text-text-primary;
+    font-family: var(--font-body);
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-.font-serif-accent {
-  font-family: 'PP Mondwest', Georgia, serif;
+.font-display {
+  font-family: var(--font-display);
 }
 
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(30px); }
+.accent-gradient {
+  background: linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+}
+
+.accent-gradient-reverse {
+  background: linear-gradient(270deg, #89AACC 0%, #4E85BF 100%);
+}
+
+@keyframes scroll-down {
+  0% { transform: translateY(-100%); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+.animate-scroll-down {
+  animation: scroll-down 1.5s ease-in-out infinite;
+}
+
+@keyframes role-fade-in {
+  0% { opacity: 0; transform: translateY(8px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-  opacity: 0;
+.animate-role-fade-in {
+  animation: role-fade-in 0.4s ease-out forwards;
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-@media (max-width: 768px) {
-  .animate-marquee {
-    animation-duration: 10s;
-  }
+.animate-gradient-shift {
+  animation: gradient-shift 6s ease infinite;
+  background-size: 200% 200%;
 }
