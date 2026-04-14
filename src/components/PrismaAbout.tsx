@@ -21,7 +21,7 @@ export default function PrismaAbout() {
         <div className="bg-[#101010] rounded-3xl md:rounded-[2.5rem] px-6 sm:px-10 md:px-16 py-16 md:py-24 text-center">
           {/* Label */}
           <p className="text-primary text-[10px] sm:text-xs tracking-widest uppercase mb-8 md:mb-12">
-            Visual arts
+            Backend Engineering
           </p>
 
           {/* Multi-style heading */}
@@ -29,9 +29,9 @@ export default function PrismaAbout() {
             <WordsPullUpMultiStyle
               containerClassName="justify-center"
               segments={[
-                { text: "I am Marcus Chen,", className: "font-normal" },
-                { text: "a self-taught director.", className: "italic font-serif" },
-                { text: "I have skills in color grading, visual effects, and narrative design.", className: "font-normal" },
+                { text: "I am Awais Maqsood,", className: "font-normal" },
+                { text: "a senior backend engineer.", className: "italic font-serif" },
+                { text: "I specialize in Python, FastAPI, microservices, and AI pipelines.", className: "font-normal" },
               ]}
             />
           </h2>
