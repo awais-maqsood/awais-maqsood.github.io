@@ -4,7 +4,7 @@ import WordsPullUpMultiStyle from "./WordsPullUpMultiStyle";
 import AnimatedLetter from "./AnimatedLetter";
 
 const aboutText =
-  "Over the last seven years, I have worked with Parallax, a Berlin-based production house that crafts cinema, series, and Noir Studio in Paris. Together, we have created work that has earned international acclaim at several major festivals.";
+  "Over the last ten years, I have architected production-grade backend systems across telecom, finance, and AI analytics domains. From microservices platforms serving millions of users at Jazz, Zong, and Telenor, to AI-powered retail analytics and real-time video processing pipelines, I bring strong ownership from system design to deployment and scaling.";
 
 export default function PrismaAbout() {
   const paragraphRef = useRef<HTMLDivElement>(null);
@@ -21,7 +21,7 @@ export default function PrismaAbout() {
         <div className="bg-[#101010] rounded-3xl md:rounded-[2.5rem] px-6 sm:px-10 md:px-16 py-16 md:py-24 text-center">
           {/* Label */}
           <p className="text-primary text-[10px] sm:text-xs tracking-widest uppercase mb-8 md:mb-12">
-            Visual arts
+            Backend Engineering
           </p>
 
           {/* Multi-style heading */}
@@ -29,9 +29,9 @@ export default function PrismaAbout() {
             <WordsPullUpMultiStyle
               containerClassName="justify-center"
               segments={[
-                { text: "I am Marcus Chen,", className: "font-normal" },
-                { text: "a self-taught director.", className: "italic font-serif" },
-                { text: "I have skills in color grading, visual effects, and narrative design.", className: "font-normal" },
+                { text: "I am Awais Maqsood,", className: "font-normal" },
+                { text: "a senior backend engineer.", className: "italic font-serif" },
+                { text: "I specialize in Python, FastAPI, microservices, and AI pipelines.", className: "font-normal" },
               ]}
             />
           </h2>
