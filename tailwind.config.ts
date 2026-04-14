@@ -11,7 +11,16 @@ export default {
       screens: { "2xl": "1400px" },
     },
     extend: {
+      fontFamily: {
+        body: ["'Inter'", "sans-serif"],
+        display: ["'Instrument Serif'", "serif"],
+      },
       colors: {
+        bg: "hsl(var(--bg))",
+        surface: "hsl(var(--surface))",
+        "text-primary": "hsl(var(--text))",
+        muted: "hsl(var(--muted))",
+        stroke: "hsl(var(--stroke))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -29,12 +38,8 @@ export default {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "hsl(var(--accent-color))",
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
@@ -45,11 +50,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        dark: "hsl(var(--color-dark))",
-        body: "hsl(var(--color-body))",
-        light: "hsl(var(--color-light))",
-        "light-muted": "hsl(var(--color-light-muted))",
-        "muted-text": "hsl(var(--color-muted-text))",
       },
       borderRadius: {
         lg: "var(--radius)",
