@@ -1,119 +1,163 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import Hls from "hls.js";
+import { Mail, Phone, MapPin, ArrowRight, Github, Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
-const HLS_URL = "https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8";
-const socials = [
-  { label: "LinkedIn", href: "https://linkedin.com/in/awaismaqsood" },
-  { label: "GitHub", href: "https://github.com/awaismaqsood" },
-  { label: "Email", href: "mailto:awaismaqsood91@gmail.com" },
+const contactCards = [
+  { icon: Mail, label: "EMAIL", value: "awaismaqsood91@gmail.com", href: "mailto:awaismaqsood91@gmail.com" },
+  { icon: Phone, label: "PHONE", value: "+92-334-5922584", href: "tel:+923345922584" },
+  { icon: MapPin, label: "LOCATION", value: "Islamabad, Pakistan", href: undefined },
 ];
 
-const marqueeText = "BUILDING THE FUTURE • ";
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+const socialLinks = [
+  { icon: Github, label: "GitHub", href: "https://github.com/awaismaqsood" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/awaismaqsood" },
+];
 
 export default function ContactFooter() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const marqueeRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(HLS_URL);
-      hls.attachMedia(video);
-      return () => hls.destroy();
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = HLS_URL;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!marqueeRef.current) return;
-    const ctx = gsap.context(() => {
-      gsap.to(marqueeRef.current, {
-        xPercent: -50,
-        duration: 40,
-        ease: "none",
-        repeat: -1,
-      });
-    });
-    return () => ctx.revert();
-  }, []);
+  const { ref, inView } = useInViewAnimation(0.1);
 
   return (
-    <section id="contact" className="relative bg-bg pt-16 md:pt-20 pb-8 md:pb-12 overflow-hidden">
-      {/* BG Video (flipped) */}
-      <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute top-1/2 left-1/2 min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2"
-          style={{ transform: "translate(-50%, -50%) scaleY(-1)" }}
-        />
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
-
-      <div className="relative z-10">
-        {/* Marquee */}
-        <div className="overflow-hidden mb-12 md:mb-16">
-          <div ref={marqueeRef} className="flex whitespace-nowrap">
-            {Array.from({ length: 10 }).map((_, i) => (
-              <span
-                key={i}
-                className="text-4xl md:text-6xl lg:text-8xl font-display italic text-text-primary/10 mx-4"
+    <section id="contact" ref={ref} className="bg-black py-16 md:py-24 px-6">
+      <div className="max-w-[1200px] mx-auto">
+        {/* Contact Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 mb-24">
+          {/* Left - CTA Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-card rounded-2xl p-8 md:p-12 flex flex-col justify-between min-h-[320px]"
+          >
+            <div>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground mb-6 uppercase">Get in Touch</p>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
+                Let's build<br />
+                <span className="font-['Instrument_Serif'] italic">something great.</span>
+              </h2>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground mb-6 max-w-md">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              </p>
+              <a
+                href="mailto:awaismaqsood91@gmail.com"
+                className="inline-flex items-center gap-2 bg-foreground text-primary-foreground rounded-full pl-6 pr-2 py-2 text-sm font-medium hover:opacity-90 transition-opacity"
               >
-                {marqueeText}
-              </span>
+                Say hello
+                <span className="w-8 h-8 rounded-full bg-primary-foreground text-foreground flex items-center justify-center">
+                  <ArrowRight size={16} />
+                </span>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right - Info Cards */}
+          <div className="flex flex-col gap-4 md:w-[340px]">
+            {contactCards.map((card, i) => (
+              <motion.div
+                key={card.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 * (i + 1), ease: [0.22, 1, 0.36, 1] }}
+              >
+                {card.href ? (
+                  <a href={card.href} className="block bg-card rounded-2xl p-6 hover:bg-card/80 transition-colors">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center">
+                        <card.icon size={18} className="text-muted-foreground" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">{card.label}</p>
+                        <p className="text-sm text-foreground mt-0.5">{card.value}</p>
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <div className="bg-card rounded-2xl p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center">
+                        <card.icon size={18} className="text-muted-foreground" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">{card.label}</p>
+                        <p className="text-sm text-foreground mt-0.5">{card.value}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="text-center mb-16 md:mb-20 px-6">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display italic text-text-primary mb-6">
-            Let's work together
-          </h2>
-          <p className="text-sm md:text-base text-muted mb-8 max-w-md mx-auto">
-            Have a project in mind? Let's discuss how we can bring your ideas to production.
-          </p>
-          <a
-            href="mailto:awaismaqsood91@gmail.com"
-            className="group relative inline-flex items-center gap-2 rounded-full text-sm px-8 py-4 bg-text-primary text-bg hover:bg-bg hover:text-text-primary transition-all duration-300 hover:scale-105"
-          >
-            <span>awaismaqsood91@gmail.com</span>
-            <span className="transition-transform group-hover:translate-x-1">↗</span>
-          </a>
-        </div>
+        {/* Divider */}
+        <div className="border-t border-border mb-12" />
 
-        {/* Footer Bar */}
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
-          <div className="border-t border-stroke pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-6">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted hover:text-text-primary transition-colors"
-                >
-                  {s.label}
+        {/* Footer */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-10"
+        >
+          {/* Branding */}
+          <div>
+            <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-3">Awais Maqsood</p>
+            <h3 className="text-xl font-bold text-foreground mb-3">Full-Stack Developer & AI Engineer</h3>
+            <p className="text-sm text-muted-foreground mb-5 max-w-sm">
+              Building thoughtful web products, AI tools, and production-ready systems with strong engineering fundamentals.
+            </p>
+            <a
+              href="mailto:awaismaqsood91@gmail.com"
+              className="inline-flex items-center gap-2 border border-border rounded-full px-5 py-2.5 text-sm text-foreground hover:bg-card transition-colors"
+            >
+              awaismaqsood91@gmail.com
+              <ArrowRight size={14} className="-rotate-45" />
+            </a>
+          </div>
+
+          {/* Navigate */}
+          <div>
+            <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-4">Navigate</p>
+            <div className="flex flex-col gap-2.5">
+              {navLinks.map((link) => (
+                <a key={link.label} href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  {link.label}
                 </a>
               ))}
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm text-muted">Available for projects</span>
+          </div>
+
+          {/* Elsewhere */}
+          <div>
+            <p className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase mb-4">Elsewhere</p>
+            <div className="flex flex-col gap-3">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between bg-card rounded-xl px-5 py-3.5 text-sm text-foreground hover:bg-card/80 transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <link.icon size={18} className="text-muted-foreground" />
+                    {link.label}
+                  </div>
+                  <ArrowRight size={14} className="-rotate-45" />
+                </a>
+              ))}
             </div>
           </div>
-          <div className="text-center mt-8">
-            <p className="text-xs text-muted/50">© {new Date().getFullYear()} Awais Maqsood. All rights reserved.</p>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
