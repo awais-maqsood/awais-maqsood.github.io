@@ -5,11 +5,12 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
-const pagesBase = repoName ? `/${repoName}/` : "/";
+const isUserOrOrgSite = repoName?.endsWith(".github.io") ?? false;
+// Project pages: `/<repo>/`
+// User/Org pages (repo is `user.github.io`): `/`
+const pagesBase = repoName ? (isUserOrOrgSite ? "/" : `/${repoName}/`) : "/";
 
 export default defineConfig(({ mode }) => ({
-  // GitHub Pages project URLs are served from `/<repo>/`.
-  // This keeps asset paths + client routing working there.
   base: pagesBase,
   server: {
     host: "::",

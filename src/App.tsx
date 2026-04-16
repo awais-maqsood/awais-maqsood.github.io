@@ -8,10 +8,8 @@ import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
-const basename =
-  import.meta.env.BASE_URL.endsWith("/") && import.meta.env.BASE_URL !== "/"
-    ? import.meta.env.BASE_URL.slice(0, -1)
-    : import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL;
+const basename = baseUrl === "/" ? undefined : baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
