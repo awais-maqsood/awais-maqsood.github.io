@@ -17,7 +17,7 @@ export default function AnimatedLetter({ char, index, totalChars, scrollProgress
 
   return (
     <motion.span style={{ opacity }} className="inline">
-      {char === " " ? "\u00A0" : char}
+      {char}
     </motion.span>
   );
 }

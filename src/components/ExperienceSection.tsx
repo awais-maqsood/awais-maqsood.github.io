@@ -13,7 +13,9 @@ const experiences = [
       "Architected microservices-based backend systems for telecom platforms (Jazz, Zong, Telenor) serving millions of users.",
       "Designed APIs and data models powering 4+ production systems.",
       "Implemented JazzCash payment integration handling high-volume financial transactions with zero downtime.",
+      "Reduced deployment time by 40% via Docker-based CI/CD pipelines enabling weekly releases.",
       "Optimized MySQL queries on 40M+ records reducing report time from 45s to under 3s.",
+      "Built scalable cloud storage backend (PortAll) with zero-downtime S3 migration.",
     ],
   },
   {
@@ -48,6 +50,13 @@ const experiences = [
       "Developed ERP modules (finance, HR, reporting) improving operational efficiency.",
       "Designed modular backend architecture reducing regression risk.",
     ],
+  },
+  {
+    company: "Research Analytics International",
+    role: "Software Developer",
+    period: "2013 – 2014",
+    location: "Pakistan",
+    bullets: ["Built data-driven web applications and improved system performance by 30%."],
   },
 ];
 
@@ -95,9 +104,11 @@ function ExperienceCard({ exp, index }: { exp: typeof experiences[number]; index
 export default function ExperienceSection() {
   const eduRef = useRef<HTMLDivElement>(null);
   const eduInView = useInView(eduRef, { once: true, margin: "-80px" });
+  const languagesRef = useRef<HTMLDivElement>(null);
+  const languagesInView = useInView(languagesRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-black py-20 md:py-32 px-4 sm:px-6">
+    <section id="experience" className="bg-black py-20 md:py-32 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
@@ -134,6 +145,31 @@ export default function ExperienceSection() {
                 <p className="text-gray-500 text-xs">{education.location}</p>
               </div>
             </div>
+          </motion.div>
+
+          {/* Languages */}
+          <motion.div
+            ref={languagesRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={languagesInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-[#151515] border border-[#2a2a2a] rounded-2xl p-6 sm:p-8"
+          >
+            <p className="text-primary text-[10px] sm:text-xs tracking-widest uppercase mb-3">Languages</p>
+            <ul className="space-y-2.5">
+              <li className="flex items-start gap-2">
+                <span className="text-primary/60 mt-0.5">•</span>
+                <span className="text-gray-400 text-xs sm:text-sm leading-relaxed">English (Fluent)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary/60 mt-0.5">•</span>
+                <span className="text-gray-400 text-xs sm:text-sm leading-relaxed">Urdu (Native)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary/60 mt-0.5">•</span>
+                <span className="text-gray-400 text-xs sm:text-sm leading-relaxed">Punjabi (Native)</span>
+              </li>
+            </ul>
           </motion.div>
         </div>
       </div>

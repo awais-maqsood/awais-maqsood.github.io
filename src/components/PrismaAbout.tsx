@@ -4,7 +4,7 @@ import WordsPullUpMultiStyle from "./WordsPullUpMultiStyle";
 import AnimatedLetter from "./AnimatedLetter";
 
 const aboutText =
-  "Over the last ten years, I have architected production-grade backend systems across telecom, finance, and AI analytics domains. From microservices platforms serving millions of users at Jazz, Zong, and Telenor, to AI-powered retail analytics and real-time video processing pipelines, I bring strong ownership from system design to deployment and scaling.";
+  "Results-driven Senior Backend Engineer with 10+ years of experience designing and shipping production-grade backend systems across telecom, finance, and AI analytics domains. Proven track record of building microservices platforms serving millions of users (Jazz, Zong, Telenor), optimizing large-scale data pipelines, and integrating AI inference systems into enterprise products. Strong ownership from system design to deployment and scaling.";
 
 export default function PrismaAbout() {
   const paragraphRef = useRef<HTMLDivElement>(null);
@@ -16,12 +16,12 @@ export default function PrismaAbout() {
   const chars = aboutText.split("");
 
   return (
-    <section className="bg-black py-20 md:py-32 px-4 sm:px-6">
+    <section id="about" className="bg-black py-20 md:py-32 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="bg-[#101010] rounded-3xl md:rounded-[2.5rem] px-6 sm:px-10 md:px-16 py-16 md:py-24 text-center">
           {/* Label */}
           <p className="text-primary text-[10px] sm:text-xs tracking-widest uppercase mb-8 md:mb-12">
-            Backend Engineering
+            Professional Summary
           </p>
 
           {/* Multi-style heading */}
@@ -30,8 +30,8 @@ export default function PrismaAbout() {
               containerClassName="justify-center"
               segments={[
                 { text: "I am Awais Maqsood,", className: "font-normal" },
-                { text: "a senior backend engineer.", className: "italic font-serif" },
-                { text: "I specialize in Python, FastAPI, microservices, and AI pipelines.", className: "font-normal" },
+                { text: "a Senior Backend Engineer.", className: "italic font-serif" },
+                { text: "Python, FastAPI, Microservices, AWS & AI Pipelines.", className: "font-normal" },
               ]}
             />
           </h2>

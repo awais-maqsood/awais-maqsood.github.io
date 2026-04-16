@@ -5,57 +5,35 @@ import WordsPullUpMultiStyle from "./WordsPullUpMultiStyle";
 
 const projects = [
   {
-    name: "OZGPT — AI Chatbot Platform",
+    name: "OZGPT (Zong) — AI Chatbot Platform",
     tech: "Python, FastAPI, NLP, Multi-Channel",
     bullets: [
       "AI chatbot platform with multi-channel integrations and translation pipelines for Zong.",
       "Enterprise-scale deployment serving millions of telecom users.",
-      "Built real-time translation and NLP pipelines for multilingual support.",
     ],
   },
   {
-    name: "PortAll — Cloud Storage Backend",
-    tech: "Python, AWS S3, PostgreSQL, Docker",
+    name: "PortAll (Jazz) — Cloud Storage Backend",
+    tech: "Python, AWS (S3), PostgreSQL, Docker",
     bullets: [
       "Cloud storage backend with secure multi-device access for Jazz.",
       "Zero-downtime S3 migration serving millions of users.",
-      "Implemented end-to-end encryption and access control layers.",
     ],
   },
   {
-    name: "Retail AI Analytics Platform",
-    tech: "YOLO, OpenCV, Python, Deep Learning",
+    name: "Retail AI Analytics — YOLO Analytics Platform",
+    tech: "Python, YOLO, OpenCV, Deep Learning",
     bullets: [
       "YOLO-based real-time tracking and behavioral analysis system.",
       "Reduced manual audit effort by 60% using automated computer vision pipelines.",
-      "GPU-optimized inference pipelines for real-time video processing.",
     ],
   },
   {
-    name: "ASL Recognition System",
-    tech: "Deep Learning, OpenCV, Python",
+    name: "ASL Recognition System — Real-time Gesture Recognition",
+    tech: "Python, Deep Learning, OpenCV",
     bullets: [
       "Real-time gesture recognition using deep learning achieving 92%+ accuracy.",
-      "Built accessible communication tool using computer vision.",
       "Optimized model inference for real-time performance.",
-    ],
-  },
-  {
-    name: "JazzCash Payment Integration",
-    tech: "Python, FastAPI, Microservices",
-    bullets: [
-      "High-volume financial transaction processing with zero downtime.",
-      "Secure payment gateway integration for telecom platform.",
-      "Optimized MySQL queries on 40M+ records reducing report time from 45s to under 3s.",
-    ],
-  },
-  {
-    name: "Motorway Toll Automation",
-    tech: "Python, PostgreSQL, Biometric APIs",
-    bullets: [
-      "Backend for motorway toll automation processing thousands of daily transactions.",
-      "Enterprise HR system for 1000+ employees at FWO.",
-      "Integrated biometric hardware with secure backend APIs.",
     ],
   },
 ];
@@ -88,11 +66,11 @@ function ProjectCard({ project, index }: { project: typeof projects[number]; ind
 
 export default function PortfolioSection() {
   return (
-    <section className="bg-black py-20 md:py-32 px-4 sm:px-6">
+    <section id="projects" className="bg-black py-20 md:py-32 px-4 sm:px-6">
       <div className="max-w-5xl mx-auto">
         <div className="mb-12 md:mb-16">
           <p className="text-primary text-[10px] sm:text-xs tracking-widest uppercase mb-4">
-            Portfolio
+            Selected Projects
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             <WordsPullUpMultiStyle

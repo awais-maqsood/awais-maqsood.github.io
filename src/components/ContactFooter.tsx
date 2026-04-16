@@ -4,7 +4,7 @@ import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
 const contactCards = [
   { icon: Mail, label: "EMAIL", value: "awaismaqsood91@gmail.com", href: "mailto:awaismaqsood91@gmail.com" },
-  { icon: Phone, label: "PHONE", value: "+92-334-5922584", href: "tel:+923345922584" },
+  { icon: Phone, label: "PHONE", value: "+92-308-5029353", href: "tel:+923085029353" },
   { icon: MapPin, label: "LOCATION", value: "Islamabad, Pakistan", href: undefined },
 ];
 

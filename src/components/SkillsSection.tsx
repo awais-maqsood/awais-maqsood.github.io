@@ -8,13 +8,24 @@ const categories = [
     icon: Code,
     title: "Languages",
     number: "01",
-    skills: ["Python (Advanced)", "JavaScript", "PHP", "TypeScript"],
+    skills: ["Python (Advanced)", "JavaScript", "PHP"],
   },
   {
     icon: Server,
     title: "Backend",
     number: "02",
-    skills: ["FastAPI", "Django", "Flask", "Node.js", "Laravel", "REST APIs", "Microservices"],
+    skills: [
+      "FastAPI",
+      "Django",
+      "Flask",
+      "Node.js",
+      "Laravel",
+      "REST APIs",
+      "Microservices",
+      "Distributed Systems",
+      "Event-Driven Architecture",
+      "High Availability Design",
+    ],
   },
   {
     icon: Database,
@@ -32,13 +43,13 @@ const categories = [
     icon: Cloud,
     title: "Cloud & DevOps",
     number: "05",
-    skills: ["AWS (EC2, S3, Lambda)", "Docker", "Kubernetes", "CI/CD", "Nginx"],
+    skills: ["AWS (EC2, S3, RDS, Lambda)", "Docker", "Kubernetes", "CI/CD", "Nginx"],
   },
   {
     icon: Wrench,
     title: "Tools & Frontend",
     number: "06",
-    skills: ["Git", "Docker Compose", "Postman", "React.js", "TailwindCSS", "Jira"],
+    skills: ["Git", "Docker Compose", "Postman", "Apache JMeter", "Jira", "React.js", "TailwindCSS"],
   },
 ];
 
@@ -80,17 +91,17 @@ function SkillCard({ cat, index }: { cat: typeof categories[number]; index: numb
 
 export default function SkillsSection() {
   return (
-    <section className="bg-black py-20 md:py-32 px-4 sm:px-6">
+    <section id="skills" className="bg-black py-20 md:py-32 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 md:mb-16">
           <p className="text-primary text-[10px] sm:text-xs tracking-widest uppercase mb-4">
-            Technical Arsenal
+            Technical Skills
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             <WordsPullUpMultiStyle
               segments={[
-                { text: "Skills &", className: "font-normal text-primary" },
-                { text: "Technologies.", className: "italic font-serif text-primary" },
+                { text: "Technical", className: "font-normal text-primary" },
+                { text: "Skills.", className: "italic font-serif text-primary" },
               ]}
             />
           </h2>
