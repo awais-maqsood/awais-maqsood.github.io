@@ -4,9 +4,13 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
+const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1];
+const pagesBase = repoName ? `/${repoName}/` : "/";
+
 export default defineConfig(({ mode }) => ({
-  // Ensures assets work correctly when the app is served from a GitHub Pages subpath.
-  base: "./",
+  // GitHub Pages project URLs are served from `/<repo>/`.
+  // This keeps asset paths + client routing working there.
+  base: pagesBase,
   server: {
     host: "::",
     port: 8080,
